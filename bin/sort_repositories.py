@@ -107,14 +107,11 @@ def vim_modelines_fixup(
     to the end of the file.
     """
 
-    vim_comments = []
-    for node in repositories_node:
-        if (
-            isinstance(node, etree._Comment)
-            and node.text.startswith(" vim:")
-            ):
-            vim_comments.append(node)
-
+    vim_comments = [
+        node
+        for node in repositories_node
+        if (isinstance(node, etree._Comment) and node.text.startswith(" vim:"))
+    ]
     for vim_comment in vim_comments:
         repositories_node.remove(vim_comment)
         repositories_node.append(vim_comment)

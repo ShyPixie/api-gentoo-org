@@ -14,16 +14,20 @@ def main(argv):
     default_title = 'UID_GID_Assignment_Table'
 
     argp = argparse.ArgumentParser(prog=argv[0])
-    argp.add_argument('--api-url', default=default_api_url,
-                      help='URL to MediaWiki API (default: {})'
-                           .format(default_api_url))
+    argp.add_argument(
+        '--api-url',
+        default=default_api_url,
+        help=f'URL to MediaWiki API (default: {default_api_url})',
+    )
     argp.add_argument('-p', '--password', required=True,
                       help='Bot password to log in with')
     argp.add_argument('--script', default=default_script_path,
                       help='Path to uidgid2wiki script')
-    argp.add_argument('--title', default=default_title,
-                      help='Title of page to edit (default: {})'
-                           .format(default_title))
+    argp.add_argument(
+        '--title',
+        default=default_title,
+        help=f'Title of page to edit (default: {default_title})',
+    )
     argp.add_argument('-u', '--username', required=True,
                       help='Username to log in with')
     argp.add_argument('path', nargs=1, metavar='uid-gid.txt',
